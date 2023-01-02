@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import json
+from altair_saver import save
 import os
 # npm install vega-lite vega-cli canvas
 
@@ -102,5 +103,5 @@ class BarGraph:
             # remove grid lines around column clusters
             strokeOpacity=0
         )
-        chart.save('bar_graph.png')
+        save(chart, "bar_graph.png")
         return 'bar_graph.png'
