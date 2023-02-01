@@ -24,8 +24,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-START_COMMENT = '<!--START_SECTION:waka-->'
-END_COMMENT = '<!--END_SECTION:waka-->'
+START_COMMENT = f'<!--START_SECTION:{os.getenv("INPUT_SECTION_NAME")}-->'
+END_COMMENT = f'<!--END_SECTION:{os.getenv("INPUT_SECTION_NAME")}-->'
 listReg = f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
 
 waka_key = os.getenv('INPUT_WAKATIME_API_KEY')
@@ -441,7 +441,7 @@ def get_short_info(github):
         print("Please add new github personal access token with user permission")
     else:
         disk_usage = humanize.naturalsize(user_info.disk_usage)
-    request = requests.get('https://github-contributions.now.sh/api/v1/' + user_info.login)
+    request = requests.get('https://github-contributions.vercel.app/api/v1/' + user_info.login)
     if request.status_code == 200:
         data = request.json()
         total = data['years'][0]['total']
