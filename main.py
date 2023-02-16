@@ -202,7 +202,7 @@ def make_list(data: list):
         ln = len(l['name'])
         ln_text = len(l['text'])
         percent = "{:05.2f}".format(float(l['percent']))
-        op = f" <tr><td>{l['name'][:25]}</td><td>{l['text']}</td><td>{make_graph(percent)} {percent}%</td></tr>"
+        op = f" <tr><td>{l['name'][:25]}</td><td>{l['text']}</td><td>{make_graph(l['percent'])} {percent}%</td></tr>"
         data_list.append(op)
     return '\n'.join(data_list)
 
@@ -214,7 +214,7 @@ def make_commit_list(data: list):
         ln = len(l['name'])
         ln_text = len(l['text'])
         percent = "{:05.2f}".format(float(l['percent']))
-        op = f" <tr><td>{l['name']}</td><td>{l['text']}</td><td>{make_graph(percent)} {percent}%</td></tr>"
+        op = f" <tr><td>{l['name']}</td><td>{l['text']}</td><td>{make_graph(l['percent'])} {percent}%</td></tr>"
         data_list.append(op)
     return '\n'.join(data_list)
 
