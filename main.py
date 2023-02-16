@@ -201,9 +201,10 @@ def make_list(data: list):
     for l in data[:5]:
         ln = len(l['name'])
         ln_text = len(l['text'])
-        op = f" <tr><td>{l['name'][:25]}</td><td>{l['text']}</td><td>{make_graph(l['percent'])} {l['percent']}%</td></tr>"
+        percent = "{:05.2f}".format(float(l['percent']))
+        op = f" <tr><td>{l['name'][:25]}</td><td>{l['text']}</td><td>{make_graph(percent)} {percent}%</td></tr>"
         data_list.append(op)
-    return ' \n'.join(data_list)
+    return '\n'.join(data_list)
 
 
 def make_commit_list(data: list):
@@ -212,9 +213,10 @@ def make_commit_list(data: list):
     for l in data[:7]:
         ln = len(l['name'])
         ln_text = len(l['text'])
-        op = f" <tr><td>{l['name']}</td><td>{l['text']}</td><td>{make_graph(l['percent'])} {l['percent']}%</td></tr>"
+        percent = "{:05.2f}".format(float(l['percent']))
+        op = f" <tr><td>{l['name']}</td><td>{l['text']}</td><td>{make_graph(percent)} {percent}%</td></tr>"
         data_list.append(op)
-    return ' \n'.join(data_list)
+    return '\n'.join(data_list)
 
 
 def generate_commit_list(tz):
@@ -442,10 +444,10 @@ def get_short_info(github):
     else:
         disk_usage = humanize.naturalsize(user_info.disk_usage)
     request = requests.get('https://github-contributions.vercel.app/api/v1/' + user_info.login)
-    if request.status_code == 200:
-        data = request.json()
-        total = data['years'][0]['total']
-        year = data['years'][0]['year']
+    if request.status_code == 200 and len(request.json()['years']) > 0:
+        this_year_data = request.json()['years'][0]
+        total = this_year_data['total']
+        year = this_year_data['year']
         string += '> 🏆 ' + translate['Contributions in the year'] % (humanize.intcomma(total), year) + '\n > \n'
 
     string += '> 📦 ' + translate["Used in GitHub's Storage"] % disk_usage + ' \n > \n'
