@@ -345,7 +345,6 @@ def get_waka_time_stats():
         empty = True
         data = request.json()
         if showCommit.lower() in truthy:
-            stats = stats + generate_commit_list(tz=data['data']['timezone']) + '\n'
             empty = False
             stats = stats + \
                 generate_commit_list(tz=data['data']['timezone']) + '\n\n'
