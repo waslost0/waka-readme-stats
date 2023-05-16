@@ -410,7 +410,7 @@ Contributions are welcome! ♥! Please share any features, and add unit tests! U
 
   - [Waterdev](https://github.com/UnrealValentin)
   
-  - [Aditya Prasad S](https://github.com/adityaprasad502)
+  - [Aditya Prasad S](https://github.com/UnrealValentin](https://github.com/adityaprasad502)
   
   - [C. Vinicius Santos](https://github.com/c-viniciussantos)
   
